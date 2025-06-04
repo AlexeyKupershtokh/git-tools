@@ -58,7 +58,7 @@ func main() {
 	// Определение бранча
 	var branch string
 	if *optM {
-		branch = "master"
+		branch = "refs/heads/master"
 	} else {
 		headFile := filepath.Join(gitDir, "HEAD")
 		branch, err = getCurrentBranch(headFile)
