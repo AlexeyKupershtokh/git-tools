@@ -1,3 +1,3 @@
-module github.com/akupershtokh/git-tools
+module github.com/AlexeyKupershtokh/git-tools
 
 go 1.18.0
