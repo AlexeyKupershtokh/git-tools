@@ -3,7 +3,7 @@
 ## Установка
 
 ```shell
-git clone 
+go install github.com/alexeykupershtokh/git-tools/cmd/git-open@latest
 ```
 
 ## git open

@@ -17,6 +17,7 @@ import (
 var (
 	optM = flag.Bool("m", false, "Open master branch")
 	optR = flag.Bool("r", false, "Open root of repo")
+	optN = flag.Bool("n", false, "Do not open browser, just print the link")
 )
 
 func main() {
@@ -103,7 +104,9 @@ func main() {
 
 	fmt.Printf("Opening: %s\n", finalURL)
 
-	openBrowser(finalURL)
+	if !*optN {
+		openBrowser(finalURL)
+	}
 }
 
 // Находим .git директорию
