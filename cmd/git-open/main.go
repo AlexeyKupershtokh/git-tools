@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/url"
@@ -97,8 +96,8 @@ func main() {
 	// Строим URL
 	finalURL := baseURL + relativePath
 
-	if branch != "master" {
-		encodedBranch := url.QueryEscape("refs/heads/" + branch)
+	if branch != "refs/heads/master" {
+		encodedBranch := url.QueryEscape(branch)
 		finalURL += "?at=" + encodedBranch
 	}
 
@@ -129,7 +128,7 @@ func findGitDir(start string) (string, error) {
 
 // Парсим remote.origin.url из .git/config
 func parseRemoteURL(configPath string) (string, error) {
-	data, err := ioutil.ReadFile(configPath)
+	data, err := os.ReadFile(configPath)
 	if err != nil {
 		return "", err
 	}
@@ -176,7 +175,7 @@ func parseRepoInfo(remoteURL string) (project, repoName string, err error) {
 
 // Читаем .git/HEAD и определяем бранч
 func getCurrentBranch(headPath string) (string, error) {
-	data, err := ioutil.ReadFile(headPath)
+	data, err := os.ReadFile(headPath)
 	if err != nil {
 		return "", err
 	}
