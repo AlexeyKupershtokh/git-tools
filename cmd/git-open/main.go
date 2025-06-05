@@ -102,10 +102,11 @@ func main() {
 		finalURL += "?at=" + encodedBranch
 	}
 
-	fmt.Printf("Opening: %s\n", finalURL)
-
 	if !*optN {
+		fmt.Printf("Opening: %s\n", finalURL)
 		openBrowser(finalURL)
+	} else {
+		fmt.Printf("URL: %s\n", finalURL)
 	}
 }
 
